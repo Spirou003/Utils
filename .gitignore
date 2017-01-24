@@ -1,0 +1,10 @@
+*.txt
+bin
+obj
+doc
+img
+*.depend
+*.layout
+*.ods
+*.bat
+*.cbp
