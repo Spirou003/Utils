@@ -1,6 +1,9 @@
 #ifndef UTILS_NONCOPYABLE_HPP
 #define UTILS_NONCOPYABLE_HPP
 
+namespace Utils
+{
+
 /**
  * @brief Class that can't be copied.
  *
@@ -17,5 +20,7 @@ class NonCopyable
         NonCopyable(const NonCopyable &) = delete;
         NonCopyable & operator=(const NonCopyable &) = delete;
 };
+
+}
 
 #endif
