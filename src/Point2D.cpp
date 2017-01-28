@@ -1,7 +1,4 @@
-#ifndef POINT2D_CPP
-#define POINT2D_CPP
-
-#include "Point2D.hpp"
+#ifdef UTILS_POINT2D_HPP
 
 template<typename T>
 Point2D<T>::Point2D(): x(), y()

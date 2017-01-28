@@ -1,5 +1,5 @@
-#ifndef MATRIX_HPP
-#define MATRIX_HPP
+#ifndef UTILS_MATRIX_HPP
+#define UTILS_MATRIX_HPP
 
 #include <stdexcept>
 #include <cstdlib>
@@ -16,6 +16,8 @@ class Matrix
         Matrix(Matrix<T> const & M);
         Matrix(Matrix<T> const * m);
         ~Matrix() throw();
+
+        Matrix<T> & operator=(const Matrix<T> & M) = delete;
 
         T & operator()(unsigned int l, unsigned int c);
         T const & operator()(unsigned int l, unsigned int c) const;

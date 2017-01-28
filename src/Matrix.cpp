@@ -1,7 +1,4 @@
-#ifndef MATRIX_CPP
-#define MATRIX_CPP
-
-#include "Matrix.hpp"
+#ifdef UTILS_MATRIX_HPP
 
 namespace
 {
