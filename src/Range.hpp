@@ -2,8 +2,9 @@
 #define UTILS_RANGE_HPP
 
 #include <cstdint>
+#include <iterator>
 
-class r__IteratorStepOne
+class r__IteratorStepOne: public std::iterator<std::input_iterator_tag, int32_t>
 {
     public:
         r__IteratorStepOne(int32_t v);
@@ -17,7 +18,7 @@ class r__IteratorStepOne
         int32_t n;
 };
 
-class r__IteratorStepVariable
+class r__IteratorStepVariable: public std::iterator<std::input_iterator_tag, int32_t>
 {
     public:
         r__IteratorStepVariable(int32_t v, int s);
