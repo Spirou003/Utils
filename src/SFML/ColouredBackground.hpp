@@ -21,6 +21,10 @@ class ColouredBackground: public sf::Drawable
         virtual void draw(sf::RenderTarget & target, sf::RenderStates states) const;
 
         void SetColors(const sf::Color & topLeft, const sf::Color & topRight, const sf::Color & bottomLeft, const sf::Color & bottomRight);
+        sf::Color GetTopLeft() const;
+        sf::Color GetTopRight() const;
+        sf::Color GetBottomLeft() const;
+        sf::Color GetBottomRight() const;
 
     private:
         sf::Vertex _vertices[6];

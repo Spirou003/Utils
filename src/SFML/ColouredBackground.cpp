@@ -2,6 +2,14 @@
 #include <SFML/Graphics/RenderTarget.hpp>
 #include <SFML/Graphics/Texture.hpp>
 
+enum
+{
+    TOPLEFT = 1,
+    TOPRIGHT = 2,
+    BOTTOMRIGHT = 3,
+    BOTTOMLEFT = 4,
+};
+
 namespace Utils{namespace sfml
 {
 
@@ -31,11 +39,31 @@ void ColouredBackground::SetColors(const sf::Color & topLeft, const sf::Color & 
         (int(topLeft.g) + int(topRight.g) + int(bottomLeft.g) + int(bottomRight.g))/4,
         (int(topLeft.b) + int(topRight.b) + int(bottomLeft.b) + int(bottomRight.b))/4,
         (int(topLeft.a) + int(topRight.a) + int(bottomLeft.a) + int(bottomRight.a))/4);
-    _vertices[1].color = topLeft;
-    _vertices[2].color = topRight;
-    _vertices[3].color = bottomRight;
-    _vertices[4].color = bottomLeft;
+    _vertices[TOPLEFT].color = topLeft;
+    _vertices[TOPRIGHT].color = topRight;
+    _vertices[BOTTOMRIGHT].color = bottomRight;
+    _vertices[BOTTOMLEFT].color = bottomLeft;
     _vertices[5] = _vertices[1];
+}
+
+sf::Color ColouredBackground::GetTopLeft() const
+{
+    return _vertices[TOPLEFT].color;
+}
+
+sf::Color ColouredBackground::GetTopRight() const
+{
+    return _vertices[TOPRIGHT].color;
+}
+
+sf::Color ColouredBackground::GetBottomLeft() const
+{
+    return _vertices[BOTTOMLEFT].color;
+}
+
+sf::Color ColouredBackground::GetBottomRight() const
+{
+    return _vertices[BOTTOMRIGHT].color;
 }
 
 void ColouredBackground::draw(sf::RenderTarget & target, sf::RenderStates states) const
