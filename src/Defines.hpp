@@ -15,6 +15,8 @@
 #define PI 3.141592653589793238463
 #endif
 
+#define DeleteIfNotNull(ptr) if (ptr == nullptr) { delete(ptr); }
+
 #endif
 
 
