@@ -17,7 +17,10 @@ class TexturedBackground: public sf::Drawable
 {
     public:
         TexturedBackground();
+        TexturedBackground(const TexturedBackground & other) = default;
         ~TexturedBackground();
+
+        TexturedBackground & operator=(const TexturedBackground & other) = default;
 
         void SetRepeat(unsigned int horizontalRepeat, unsigned int verticalRepeat);
         void SetTexture(const sf::Texture * texture);

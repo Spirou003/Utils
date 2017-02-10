@@ -3,7 +3,7 @@
 namespace Utils
 {
 
-Zero * Zero::instance = 00;
+Zero * Zero::instance = nullptr;
 
 Zero::Zero(){}
 Zero::~Zero(){}
@@ -15,7 +15,7 @@ uint32_t Zero::operator()() throw()
 
 NumberGenerator * Zero::GetInstance()
 {
-    if (instance == 00)
+    if (instance == nullptr)
         instance = new Zero();
     return instance;
 }

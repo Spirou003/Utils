@@ -9,7 +9,7 @@ class r__IteratorStepOne: public std::iterator<std::input_iterator_tag, int32_t>
     public:
         r__IteratorStepOne(int32_t v);
         int32_t operator*() const;
-        r__IteratorStepOne operator++();
+        r__IteratorStepOne & operator++();
         r__IteratorStepOne operator++(int);
         bool operator==(const r__IteratorStepOne & other) const;
         bool operator!=(const r__IteratorStepOne & other) const;
@@ -23,7 +23,7 @@ class r__IteratorStepVariable: public std::iterator<std::input_iterator_tag, int
     public:
         r__IteratorStepVariable(int32_t v, int s);
         int32_t operator*() const;
-        r__IteratorStepVariable operator++();
+        r__IteratorStepVariable & operator++();
         r__IteratorStepVariable operator++(int);
         bool operator==(const r__IteratorStepVariable & other) const;
         bool operator!=(const r__IteratorStepVariable & other) const;

@@ -50,6 +50,8 @@ bool ToInt(int & result, const char * str, unsigned int basis)
     return i > 0;
 }
 
+char _ToChar(int value, bool isLower);
+
 char _ToChar(int value, bool isLower)
 {
     if (value < 10)

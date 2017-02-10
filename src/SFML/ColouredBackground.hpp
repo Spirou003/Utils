@@ -1,5 +1,5 @@
-#ifndef UTILS_COLOUREDBACKGROUND_HPP
-#define UTILS_COLOUREDBACKGROUND_HPP
+#ifndef UTILS_SFML_COLOUREDBACKGROUND_HPP
+#define UTILS_SFML_COLOUREDBACKGROUND_HPP
 
 #include <SFML/Graphics/Drawable.hpp>
 #include <SFML/Graphics/Vertex.hpp>

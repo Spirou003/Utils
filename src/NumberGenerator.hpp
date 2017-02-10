@@ -15,7 +15,7 @@ class NumberGenerator
 {
     public:
         NumberGenerator();
-        ~NumberGenerator();
+        virtual ~NumberGenerator();
 
         /**
          * @brief Get a positive integer.

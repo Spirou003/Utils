@@ -5,7 +5,7 @@ Point2D<T>::Point2D(): x(), y()
 {}
 
 template<typename T>
-Point2D<T>::Point2D(T x, T y): x(x), y(y)
+Point2D<T>::Point2D(T X, T Y): x(X), y(Y)
 {}
 
 template<typename T>

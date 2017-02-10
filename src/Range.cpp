@@ -2,9 +2,10 @@
 
 r__IteratorStepOne::r__IteratorStepOne(int32_t v):n(v){}
 int32_t r__IteratorStepOne::operator*() const{return n;}
-r__IteratorStepOne r__IteratorStepOne::operator++()
+r__IteratorStepOne & r__IteratorStepOne::operator++()
 {
-    return ++n;
+    ++n;
+    return *this;
 }
 r__IteratorStepOne r__IteratorStepOne::operator++(int)
 {
@@ -31,7 +32,7 @@ r__IteratorStepOne r__RangeStepOne::end() const
 
 r__IteratorStepVariable::r__IteratorStepVariable(int32_t v, int32_t s):n(v), step(s){}
 int32_t r__IteratorStepVariable::operator*() const{return n;}
-r__IteratorStepVariable r__IteratorStepVariable::operator++()
+r__IteratorStepVariable & r__IteratorStepVariable::operator++()
 {
     n += step;
     return *this;

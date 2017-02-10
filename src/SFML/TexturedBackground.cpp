@@ -6,7 +6,7 @@ namespace Utils{namespace sfml
 {
 
 TexturedBackground::TexturedBackground():
-_texture(00), _vertices(), _horizontalRepeat(1), _verticalRepeat(1)
+_texture(nullptr), _vertices(), _horizontalRepeat(1), _verticalRepeat(1)
 {
     _vertices[0].color = sf::Color::White;
     _vertices[1].color = sf::Color::White;
