@@ -17,7 +17,7 @@ void TileMapper::MakeCoords(size_t x, size_t y, size_t index) const
     float unitY = internalRect.height;
     float xmin = (externalRect.left - internalRect.left)/unitX + x;
     float xmax = (externalRect.left+externalRect.width - (internalRect.left+internalRect.width))/unitX + x + 1;
-    float ymin = (externalRect.top+externalRect.height - (internalRect.top+internalRect.height))/unitY + y;
+    float ymin = (externalRect.top-externalRect.height - (internalRect.top-internalRect.height))/unitY + y;
     float ymax = (externalRect.top - internalRect.top)/unitY + y + 1;
 
     sf::Color color = GetColor(x, y);
