@@ -1,24 +1,17 @@
 #ifdef UTILS_MATRIX_HPP
 
-namespace
-{
-    char CHAR_ARRAY_ERR[255];
-}
+#include "AssertException.hpp"
 
 template <typename T>
-Utils::Matrix<T>::Matrix(unsigned int l, unsigned int c):
+Utils::Matrix<T>::Matrix(size_t l, size_t c):
 Lines(l), Columns(c), _tab(nullptr)
 {
-    if (l == 0 || c == 0)
-    {
-        sprintf(CHAR_ARRAY_ERR, "Matrix must have at least one dimension (L = %d , C = %d)", l, c);
-        throw std::length_error(CHAR_ARRAY_ERR);
-    }
+    if (l == 0)
+        throw std::length_error("Can't create matrix with no line.");
+    else if (c == 0)
+        throw std::length_error("Can't create matrix with no column.");
     else if ((long long int)(l) * (long long int)(l) > (long long int)(l*c))
-    {
-        sprintf(CHAR_ARRAY_ERR, "Size of matrix is too big");
-        throw std::overflow_error(CHAR_ARRAY_ERR);
-    }
+        throw std::overflow_error("Too big dimensions.");
     _tab = new T[l*c];
 }
 
@@ -35,60 +28,43 @@ Lines(M.Lines), Columns(M.Columns), _tab(new T[M.Lines*M.Columns])
 }
 
 template <typename T>
-Utils::Matrix<T>::Matrix(Matrix<T> const * M):
-Lines(0), Columns(0), _tab(nullptr)
-{
-    if (M == nullptr)
-    {
-        sprintf(CHAR_ARRAY_ERR, "Can't create a matrix from a null pointer");
-    }
-    Lines = M->Lines;
-    Columns = M->Columns;
-    int i = 0, s = Lines*Columns;
-    while (i < s)
-    {
-        _tab[i] = M._tab[i];
-        i++;
-    }
-}
-
-template <typename T>
 Utils::Matrix<T>::~Matrix() throw()
 {
-    delete[](_tab);
+    if (_tab != nullptr)
+        delete[](_tab);
 }
 
 template <typename T>
-T & Utils::Matrix<T>::operator()(unsigned int l, unsigned int c)
+T & Utils::Matrix<T>::operator()(size_t l, size_t c)
 {
-    if (l >= Lines || c >= Columns)
-    {
-        sprintf(CHAR_ARRAY_ERR, "(L , C) = (%d , %d), dimensions are %d x %d", l, c, Lines, Columns);
-        throw std::out_of_range(CHAR_ARRAY_ERR);
-    }
+    Assert(l >= Lines || c >= Columns, "");
     return _tab[l*Columns+c];
 }
 
 template <typename T>
-T const & Utils::Matrix<T>::operator()(unsigned int l, unsigned int c) const
+T const & Utils::Matrix<T>::operator()(size_t l, size_t c) const
 {
-    if (l >= Lines || c >= Columns)
-    {
-        sprintf(CHAR_ARRAY_ERR, "(L , C) = (%d , %d), dimensions are %d x %d", l, c, Lines, Columns);
-        throw std::out_of_range(CHAR_ARRAY_ERR);
-    }
+    Assert(l >= Lines || c >= Columns, "");
     return _tab[l*Columns+c];
 }
 
 template <typename T>
-T & Utils::Matrix<T>::At(unsigned int l, unsigned int c) throw()
+T & Utils::Matrix<T>::At(size_t l, size_t c) throw()
 {
+    if (l >= Lines)
+        throw std::out_of_range("Invalid line number on access.");
+    else if (c >= Columns)
+        throw std::out_of_range("Invalid column number on access.");
     return _tab[l*Columns+c];
 }
 
 template <typename T>
-T const & Utils::Matrix<T>::At(unsigned int l, unsigned int c) const throw()
+T const & Utils::Matrix<T>::At(size_t l, size_t c) const throw()
 {
+    if (l >= Lines)
+        throw std::out_of_range("Invalid line number on read access.");
+    else if (c >= Columns)
+        throw std::out_of_range("Invalid column number on read access.");
     return _tab[l*Columns+c];
 }
 

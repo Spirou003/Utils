@@ -2,6 +2,7 @@
 #define UTILS_MATRIX_HPP
 
 #include <stdexcept>
+#include <assert.h>
 #include <cstdlib>
 #include <cstdio>
 
@@ -12,19 +13,18 @@ template <typename T>
 class Matrix
 {
     public:
-        Matrix(unsigned int l = 1, unsigned int c = 1);
+        Matrix(size_t l = 1, size_t c = 1);
         Matrix(Matrix<T> const & M);
-        Matrix(Matrix<T> const * m);
         ~Matrix() throw();
 
         Matrix<T> & operator=(const Matrix<T> & M) = delete;
 
-        T & operator()(unsigned int l, unsigned int c);
-        T const & operator()(unsigned int l, unsigned int c) const;
-        T & At(unsigned int l, unsigned int c) throw();
-        T const & At(unsigned int l, unsigned int c) const throw();
+        T & operator()(size_t l, size_t c);
+        T const & operator()(size_t l, size_t c) const;
+        T & At(size_t l, size_t c) throw();
+        T const & At(size_t l, size_t c) const throw();
 
-        const unsigned int Lines, Columns;
+        const size_t Lines, Columns;
 
     private:
         T * _tab;
