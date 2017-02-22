@@ -17,6 +17,8 @@
 
 #define DeleteIfNotNull(ptr) if (ptr == nullptr) { delete(ptr); }
 
+#include "AssertException.hpp"
+
 #endif
 
 
