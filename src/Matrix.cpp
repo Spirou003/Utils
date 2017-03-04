@@ -37,16 +37,16 @@ Utils::Matrix<T>::~Matrix() throw()
 template <typename T>
 T & Utils::Matrix<T>::operator()(size_t l, size_t c)
 {
-    Assert(l >= Lines, "Invalid line number on access.");
-    Assert(c >= Columns, "Invalid column number on access.");
+    Assert(l < Lines, "Invalid line number on access.");
+    Assert(c < Columns, "Invalid column number on access.");
     return _tab[l*Columns+c];
 }
 
 template <typename T>
 T const & Utils::Matrix<T>::operator()(size_t l, size_t c) const
 {
-    Assert(l >= Lines, "Invalid line number on access.");
-    Assert(c >= Columns, "Invalid column number on access.");
+    Assert(l < Lines, "Invalid line number on access.");
+    Assert(c < Columns, "Invalid column number on access.");
     return _tab[l*Columns+c];
 }
 
