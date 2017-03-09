@@ -1,4 +1,4 @@
-azertyu#ifdef UTILS_SELECTATOR3000_HPP
+#ifdef UTILS_SELECTATOR3000_HPP
 
 #include "Utils/Selectator3000.hpp"
 
