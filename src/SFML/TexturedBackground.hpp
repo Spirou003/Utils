@@ -24,6 +24,9 @@ class TexturedBackground: public sf::Drawable
 
         void SetRepeat(unsigned int horizontalRepeat, unsigned int verticalRepeat);
         void SetTexture(const sf::Texture * texture);
+        void Rotate(int rotation);//1 = 90°, trigonometric
+        void FlipX();
+        void FlipY();
 
         virtual void draw(sf::RenderTarget & target, sf::RenderStates states) const;
 
@@ -32,7 +35,8 @@ class TexturedBackground: public sf::Drawable
 
         const sf::Texture * _texture;
         sf::Vertex _vertices[4];
-        unsigned int _horizontalRepeat, _verticalRepeat;
+        unsigned int _horizontalRepeat, _verticalRepeat, _rotation;
+        bool _flipX;
 };
 
 }}
