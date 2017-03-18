@@ -13,25 +13,37 @@ template <typename T>
 class Matrix
 {
     public:
-        Matrix(size_t l = 1, size_t c = 1);
+        typedef void (Constructor (T & toConstruct, T & constructFrom));
+
+        Matrix(size_t l = 0, size_t c = 0);
         Matrix(Matrix<T> const & M);
+        Matrix(Matrix<T> const & M, Constructor ctor);
         ~Matrix() throw();
 
         Matrix<T> & operator=(const Matrix<T> & M) = delete;
 
+        void resize(size_t l, size_t c);
+        void resize(size_t l, size_t c, Constructor ctor);
+        bool empty() const;
+        void clear();
+
         T & operator()(size_t l, size_t c);
         T const & operator()(size_t l, size_t c) const;
-        T & At(size_t l, size_t c) throw();
-        T const & At(size_t l, size_t c) const throw();
+        T & at(size_t l, size_t c);
+        T const & at(size_t l, size_t c) const;
 
-        const size_t Lines, Columns;
+        const size_t & Lines;
+        const size_t & Columns;
 
     private:
         T * _tab;
+        size_t _lines, _columns;
+
+        static void Assign(T & toConstruct, T & constructFrom);
 };
 
 }
 
-#include "Matrix.cpp"
+#include "Utils/Matrix.cpp"
 
 #endif
