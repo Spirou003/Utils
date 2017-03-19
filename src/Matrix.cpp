@@ -53,7 +53,10 @@ void Utils::Matrix<T>::resize(size_t l, size_t c, Constructor ctor)
     if (ctor == nullptr)
         throw std::invalid_argument("ctor = null");
     if (l == 0 || c == 0)
+    {
         clear();
+        return;
+    }
     else if ((l*c)/c != l)
         throw std::overflow_error("Too big dimensions.");
     else if (l == Lines && c == Columns)
@@ -99,6 +102,7 @@ void Utils::Matrix<T>::clear()
     if (Lines == 0)
         return;
     delete[](_tab);
+    _tab = nullptr;
     _lines = 0;
     _columns = 0;
 }
